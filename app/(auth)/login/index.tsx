@@ -2,25 +2,22 @@ import { useState } from "react";
 import {
   View,
   Text,
-  TextInput,
   KeyboardAvoidingView,
   Platform,
   ScrollView,
-  TouchableOpacity,
 } from "react-native";
 
 import * as SecureStore from "expo-secure-store";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Link, useRouter } from "expo-router";
+
+import AuthForm from "../../../components/auth/AuthForm";
 
 const Index = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const router = useRouter();
   const handleLogin = () => {
-    setEmail("");
-    setPassword("");
-    console.log("Email:", email);
-    console.log("Password:", password);
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("x-mobile-app", "true");
@@ -37,13 +34,16 @@ const Index = () => {
       redirect: "follow",
     };
 
-    fetch("http://10.0.2.2:3000/api/users/login", requestOptions)
+    console.log("fetch");
+    fetch("http://192.168.18.3:3000/api/users/login", requestOptions)
       .then((response) => response.text())
       .then((result) => {
+        console.log("result", result);
         const { accessToken, refreshToken, user } = JSON.parse(result);
         SecureStore.setItem("refreshToken", refreshToken);
         SecureStore.setItem("accessToken", accessToken);
         AsyncStorage.setItem("user", JSON.stringify(user));
+        router.navigate("/(app)/home/home");
       })
       .catch((error) => console.log("error", error));
   };
@@ -66,34 +66,23 @@ const Index = () => {
           LOOPA
         </Text>
 
-        <View className="mb-8 w-80 items-center">
-          <Text className="text-lg dark:text-primarySoft mb-2">Email:</Text>
-          <TextInput
-            className="h-10 p-2 text-center border dark:border-r-border border-r-lightBorder rounded-full w-80 dark:text-primarySoft"
-            autoComplete="email"
-            keyboardType="email-address"
-            value={email}
-            onChangeText={setEmail}
-          />
-        </View>
+        <AuthForm
+          email={email}
+          password={password}
+          setEmail={setEmail}
+          setPassword={setPassword}
+          labelButton="Iniciar Sesión"
+          handleButtonPress={handleLogin}
+        />
 
-        <View className="mb-8 w-80 items-center">
-          <Text className="text-lg dark:text-primarySoft mb-2">Password:</Text>
-          <TextInput
-            className="h-10 p-2 text-center rounded-full w-80 border border-r-lightBorder dark:border-r-border dark:text-primarySoft"
-            secureTextEntry
-            autoComplete="password"
-            value={password}
-            onChangeText={setPassword}
-          />
+        <View className="mt-10 items-center">
+          <Text className="text-primarySoft mb-3 text-xl">
+            ¿No tienes Cuenta?
+          </Text>
+          <Link href="/(auth)/register">
+            <Text className="text-primary text-xl">Registrate</Text>
+          </Link>
         </View>
-        <TouchableOpacity
-          className="w-80 bg-primary py-3 rounded-full items-center mt-8"
-          activeOpacity={0.7}
-          onPress={handleLogin}
-        >
-          <Text className="text-white font-bold text-lg">Login</Text>
-        </TouchableOpacity>
 
         <View style={{ height: 200 }} />
       </ScrollView>
