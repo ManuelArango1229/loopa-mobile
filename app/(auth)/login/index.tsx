@@ -43,6 +43,8 @@ const Index = () => {
         SecureStore.setItem("refreshToken", refreshToken);
         SecureStore.setItem("accessToken", accessToken);
         AsyncStorage.setItem("user", JSON.stringify(user));
+        setEmail("");
+        setPassword("");
         router.navigate("/(app)/home/home");
       })
       .catch((error) => console.log("error", error));
