@@ -5,11 +5,13 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        darkbg: "#1E1E1E",
+        darkbg: "#09090A",
         lightbg: "#F5F5F5",
 
         card: "#18181B",
         lightCard: "#F8FAFC",
+
+        button: "#8B5CF6",
 
         text: "#FFFFFF",
         lightText: "#1A1A1A",
@@ -17,7 +19,7 @@ module.exports = {
         mutedText: "#A1A1AA",
         lightMutedText: "#52525B",
 
-        border: "#3C2A59",
+        border: "#27272A",
         lightBorder: "#E4E4E7",
 
         primary: "#8B5CF6",

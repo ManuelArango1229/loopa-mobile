@@ -18,6 +18,12 @@ const Index = () => {
   const [password, setPassword] = useState("");
   const router = useRouter();
   const handleLogin = () => {
+    console.log(process.env.EXPO_PUBLIC_DEV_BYPASS_AUTH);
+    if (process.env.EXPO_PUBLIC_DEV_BYPASS_AUTH === "true") {
+      console.log("Bypassing authentication in development mode");
+      router.navigate("/(app)/home/home");
+      return;
+    }
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("x-mobile-app", "true");
@@ -78,7 +84,11 @@ const Index = () => {
         />
 
         <View className="mt-10 items-center">
-          <Text className="text-primarySoft mb-3 text-xl">
+          <Text
+            className="mb-3 text-xl
+            dark:text-text
+            "
+          >
             ¿No tienes Cuenta?
           </Text>
           <Link href="/(auth)/register">

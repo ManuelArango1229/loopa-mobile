@@ -26,9 +26,19 @@ const AuthForm = ({
   return (
     <View className="items-center justify-center">
       <View className="mt-8 mb-8 w-80 items-center">
-        <Text className="text-lg dark:text-primarySoft mb-2">Email:</Text>
+        <Text
+          className="text-lg mb-2
+
+          dark:text-text
+          "
+        >
+          Email:
+        </Text>
         <TextInput
-          className="h-15 p-2 text-center border dark:border-r-border border-r-lightBorder rounded-full w-80 dark:text-primarySoft"
+          className="h-12 p-2 text-center border-2 rounded-2xl w-80
+          border-r-lightBorder
+          dark:border-r-border dark:text-primarySoft dark:bg-card
+         "
           autoComplete="email"
           keyboardType="email-address"
           value={email}
@@ -37,9 +47,19 @@ const AuthForm = ({
       </View>
 
       <View className="mb-8 w-80 items-center">
-        <Text className="text-lg dark:text-primarySoft mb-2">Password:</Text>
+        <Text
+          className="text-lg mb-2
+
+          dark:text-text
+          "
+        >
+          Password:
+        </Text>
         <TextInput
-          className="h-15 p-2 text-center rounded-full w-80 border border-r-lightBorder dark:border-r-border dark:text-primarySoft"
+          className="h-12 p-2 text-center border-2  rounded-2xl w-80
+          border-r-lightBorder
+          dark:border-r-border dark:text-primarySoft dark:bg-card
+         "
           secureTextEntry
           autoComplete="password"
           value={password}
@@ -48,7 +68,9 @@ const AuthForm = ({
       </View>
 
       <TouchableOpacity
-        className="w-72 h-15 bg-primary py-2 rounded-full items-center mt-8"
+        className="w-72 h-12 py-2 rounded-2xl items-center mt-8
+        dark:bg-button
+        "
         activeOpacity={0.7}
         onPress={handleButtonPress}
       >

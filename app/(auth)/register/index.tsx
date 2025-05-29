@@ -72,9 +72,18 @@ const Register = () => {
           Register
         </Text>
         <View className="mb-2 w-80 mt-12 items-center">
-          <Text className="text-lg dark:text-primarySoft mb-2">Name:</Text>
+          <Text
+            className="text-lg mb-2
+            dark:text-text
+            "
+          >
+            Name:
+          </Text>
           <TextInput
-            className="h-15 p-2 text-center rounded-full w-80 border border-r-lightBorder dark:border-r-border dark:text-primarySoft"
+            className="h-12 p-2 text-center border-2  rounded-2xl w-80
+                    border-r-lightBorder
+                    dark:border-r-border dark:text-primarySoft dark:bg-card
+                   "
             autoComplete="name"
             value={name}
             onChangeText={setName}
