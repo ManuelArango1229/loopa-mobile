@@ -1,20 +1,20 @@
-import { Stack } from "expo-router";
+import { Slot } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { View } from "react-native";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export default function AppLayout() {
   return (
-    <Stack>
-      <Stack.Screen
-        name="home/home"
-        options={{
-          headerShown: false,
-        }}
-      />
-      <Stack.Screen
-        name="habits/create"
-        options={{
-          headerShown: false,
-        }}
-      />
-    </Stack>
+    <SafeAreaProvider>
+      <StatusBar style="auto" translucent />
+      <View
+        className="flex-1
+        bg-lightbg
+        dark:bg-darkbg
+        "
+      >
+        <Slot />
+      </View>
+    </SafeAreaProvider>
   );
 }

@@ -4,42 +4,41 @@ import { View, Text, TouchableOpacity } from "react-native";
 const Home = () => {
   const router = useRouter();
   const handleNewHabit = () => {
-    console.log("new habit");
     router.navigate("/(app)/habits/create");
   };
   return (
-    <View className="flex-1 bg-white dark:bg-darkbg">
+    <View className="flex-1">
       <View className="flex-row items-center justify-between px-4 py-2 mt-16">
         <View>
           <View className="flex-row items-center">
             <View
               className="w-7 h-7 rounded-md m-px
-          dark:bg-[#18181B]
+              bg-[#18181B]
           "
             />
             <View
               className="w-7 h-7 rounded-md m-px
-          dark:bg-[#4C1D95]
+              bg-[#4C1D95]
           "
             />
             <View
               className="w-7 h-7 rounded-md m-px
-          dark:bg-[#5B21B6]
+              bg-[#5B21B6]
           "
             />
             <View
               className="w-7 h-7 rounded-md m-px
-          dark:bg-[#6D28D9]
+              bg-[#6D28D9]
           "
             />
             <View
               className="w-7 h-7 rounded-md m-px
-          dark:bg-[#7C3AED]
+              bg-[#7C3AED]
           "
             />
             <View
               className="w-7 h-7 rounded-md m-px
-          dark:bg-[#8B5CF6]
+              bg-[#8B5CF6]
           "
             />
           </View>

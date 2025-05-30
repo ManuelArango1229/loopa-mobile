@@ -1,11 +1,14 @@
 import { Stack } from "expo-router";
 import "./global.css";
 import { StatusBar } from "expo-status-bar";
+import { View } from "react-native";
+
 export default function RootLayout() {
   return (
-    <>
+    <View className="flex-1">
       <StatusBar style="auto" translucent />
       <Stack>
+        <Stack.Screen name="index" options={{ headerShown: false }} />
         <Stack.Screen
           name="(auth)"
           options={{
@@ -21,6 +24,6 @@ export default function RootLayout() {
           }}
         />
       </Stack>
-    </>
+    </View>
   );
 }

@@ -2,11 +2,7 @@ import { View, Text, TextInput } from "react-native";
 
 const home = () => {
   return (
-    <View
-      className="flex-1
-      dark:bg-darkbg
-      "
-    >
+    <View className="flex-1">
       <Text
         className="text-4xl mx-8 mt-16
        dark:text-text
