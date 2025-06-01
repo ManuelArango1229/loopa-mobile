@@ -21,17 +21,12 @@ const Home = () => {
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const [habitName, setHabitName] = useState("");
   const handleButtonPress = () => {
-    console.log("Registrar habito con el nombre: ", habitName);
-    console.log("Registrar hábito con los días seleccionados:", selectedDays);
     const selectedDaysIndices = selectedDays
       .map((day) => dayToIndex[day])
       .sort((a, b) => a - b);
-    console.log(
-      "Registrar hábito con los dias seleccionados indices: ",
-      selectedDaysIndices,
-    );
     let frequency;
-    if (areEqual(selectedDays, [0, 1, 2, 3, 4, 5, 6])) {
+    console.log(areEqual(selectedDaysIndices, [0, 1, 2, 3, 4, 5, 6]));
+    if (areEqual(selectedDaysIndices, [0, 1, 2, 3, 4, 5, 6])) {
       frequency = { type: "daily" };
     } else {
       frequency = {

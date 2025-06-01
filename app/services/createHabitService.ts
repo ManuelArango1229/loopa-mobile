@@ -12,7 +12,6 @@ const createHabitService = async (
   const user = await AsyncStorage.getItem("user");
   if (!user) throw new Error("User not found in storage");
   const userId = JSON.parse(user).id;
-  console.log("Frequency: ", frequency);
   const response = await fetch(
     `${process.env.EXPO_PUBLIC_DEV_SERVER_SOCKET}/api/habits/create-habit`,
     {
@@ -21,7 +20,12 @@ const createHabitService = async (
         "Content-Type": "application/json",
         Authorization: `Bearer ${await SecureStore.getItemAsync("accessToken")}`,
       },
-      body: JSON.stringify({ name, description: "", frequency, userId }),
+      body: JSON.stringify({
+        name,
+        description: "no description",
+        frequency,
+        userId,
+      }),
     },
   );
   if (!response.ok) {
