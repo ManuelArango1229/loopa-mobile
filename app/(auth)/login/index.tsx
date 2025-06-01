@@ -7,10 +7,8 @@ import {
   ScrollView,
 } from "react-native";
 
-import * as SecureStore from "expo-secure-store";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { Link, useRouter } from "expo-router";
-
+import authService from "@/app/services/authService";
 import AuthForm from "../../../components/auth/AuthForm";
 
 const Index = () => {
@@ -24,36 +22,13 @@ const Index = () => {
       router.navigate("/(app)/home/home");
       return;
     }
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("x-mobile-app", "true");
 
-    const raw = JSON.stringify({
-      email: email,
-      password: password,
+    const result = authService(email, password);
+    result.then(() => {
+      setEmail("");
+      setPassword("");
+      router.replace("/(app)/home/home");
     });
-
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    console.log("fetch");
-    fetch("http://192.168.18.3:3000/api/users/login", requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        console.log("result", result);
-        const { accessToken, refreshToken, user } = JSON.parse(result);
-        SecureStore.setItem("refreshToken", refreshToken);
-        SecureStore.setItem("accessToken", accessToken);
-        AsyncStorage.setItem("user", JSON.stringify(user));
-        setEmail("");
-        setPassword("");
-        router.navigate("/(app)/home/home");
-      })
-      .catch((error) => console.log("error", error));
   };
   return (
     <KeyboardAvoidingView
@@ -70,7 +45,7 @@ const Index = () => {
           paddingBottom: 100,
         }}
       >
-        <Text className="text-4xl font-bold dark:text-primary mb-20">
+        <Text className="text-5xl font-black dark:text-primary mb-28">
           LOOPA
         </Text>
 

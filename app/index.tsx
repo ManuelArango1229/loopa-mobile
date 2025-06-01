@@ -12,7 +12,7 @@ const SplashScreen = () => {
 
   useEffect(() => {
     const checkToken = async () => {
-      await wait(1000);
+      await wait(1500);
       const token = SecureStore.getItem("refreshToken");
 
       if (token) {

@@ -10,6 +10,7 @@ import {
   TextInput,
   Alert,
 } from "react-native";
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 const Register = () => {
   const [email, setEmail] = useState("");
@@ -64,39 +65,38 @@ const Register = () => {
         }}
       >
         <Text
-          className="text-4xl font-bold mb-4
+          className="text-5xl font-black mb-5 h-20
           dark:text-primary
           text-lightText
           "
         >
           Register
         </Text>
-        <View className="mb-2 w-80 mt-12 items-center">
-          <Text
-            className="text-lg mb-2
-            dark:text-text
-            "
-          >
-            Name:
-          </Text>
-          <TextInput
-            className="h-12 p-2 text-center border-2  rounded-2xl w-80
+        <View className="mt-14 ">
+          <View className="mb-2 w-80 mt-12 items-center flex-row">
+            <FontAwesome5 name="user" size={24} color="white" />
+            <TextInput
+              className="h-12 p-2 border-2 text-xl rounded-2xl w-80 flex-1 ml-3
                     border-r-lightBorder
+                    placeholder:pl-6
                     dark:border-r-border dark:text-primarySoft dark:bg-card
                    "
-            autoComplete="name"
-            value={name}
-            onChangeText={setName}
+              autoComplete="name"
+              value={name}
+              onChangeText={setName}
+              placeholder="Name"
+              placeholderTextColor="#A3A3A3"
+            />
+          </View>
+          <AuthForm
+            email={email}
+            password={password}
+            setEmail={setEmail}
+            setPassword={setPassword}
+            labelButton="Register"
+            handleButtonPress={handleRegister}
           />
         </View>
-        <AuthForm
-          email={email}
-          password={password}
-          setEmail={setEmail}
-          setPassword={setPassword}
-          labelButton="Register"
-          handleButtonPress={handleRegister}
-        />
         <View style={{ height: 180 }} />
       </ScrollView>
     </KeyboardAvoidingView>

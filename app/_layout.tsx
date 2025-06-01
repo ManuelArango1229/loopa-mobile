@@ -12,10 +12,13 @@ export default function RootLayout() {
     return <SplashScreen onFinish={() => setIsAppReady(true)} />;
   }
   return (
-    <View className="flex-1">
+    <View className="flex-1 dark:bg-darkbg">
       <StatusBar style="auto" translucent />
       <Stack>
-        <Stack.Screen name="index" options={{ headerShown: false }} />
+        <Stack.Screen
+          name="index"
+          options={{ headerShown: false, animation: "fade_from_bottom" }}
+        />
         <Stack.Screen
           name="(auth)"
           options={{
