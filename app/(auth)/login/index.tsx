@@ -8,7 +8,7 @@ import {
 } from "react-native";
 
 import { Link, useRouter } from "expo-router";
-import authService from "@/app/services/authService";
+import authService from "@/src/services/authService";
 import AuthForm from "../../../components/auth/AuthForm";
 
 const Index = () => {

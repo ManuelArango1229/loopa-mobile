@@ -1,4 +1,6 @@
+import getAllHabitService from "@/src/services/getAllHabitByDateService";
 import { useRouter } from "expo-router";
+import { useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
 const Home = () => {

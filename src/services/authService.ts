@@ -16,10 +16,12 @@ const authService = async (
         body: JSON.stringify({ email, password }),
       },
     );
+    console.log(response.status);
     if (!response.ok) {
       throw new Error(`Failed to login, ${response.status}: ${response.text}`);
     }
     const { accessToken, refreshToken, user } = await response.json();
+    console.log(user);
 
     await SecureStore.setItemAsync("refreshToken", refreshToken);
     await SecureStore.setItemAsync("accessToken", accessToken);

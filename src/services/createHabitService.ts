@@ -13,7 +13,7 @@ const createHabitService = async (
   if (!user) throw new Error("User not found in storage");
   const userId = JSON.parse(user).id;
   const response = await fetch(
-    `${process.env.EXPO_PUBLIC_DEV_SERVER_SOCKET}/api/habits/create-habit`,
+    `${process.env.EXPO_PUBLIC_DEV_SERVER_SOCKET}/api/habits/`,
     {
       method: "POST",
       headers: {

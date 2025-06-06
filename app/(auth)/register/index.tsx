@@ -10,7 +10,7 @@ import {
   TextInput,
   Alert,
 } from "react-native";
-import registerService from "@/app/services/registerService";
+import registerService from "@/src/services/registerService";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 const Register = () => {

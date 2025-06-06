@@ -1,10 +1,11 @@
 import DaysSelector from "@/components/shared/DaysSelector";
-import { View, Text, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, TextInput, TouchableOpacity, Alert } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { useState } from "react";
-import createHabitService from "@/app/services/createHabitService";
-import type { Frequency } from "@/app/services/createHabitService";
+import createHabitService from "@/src/services/createHabitService";
+import type { Frequency } from "@/src/services/createHabitService";
+import { useRouter } from "expo-router";
 
 const areEqual = (a: number[], b: number[]) =>
   a.length === b.length && a.every((val, index) => val === b[index]);
@@ -20,12 +21,12 @@ const dayToIndex: Record<string, number> = {
 const Home = () => {
   const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const [habitName, setHabitName] = useState("");
+  const router = useRouter();
   const handleButtonPress = () => {
     const selectedDaysIndices = selectedDays
       .map((day) => dayToIndex[day])
       .sort((a, b) => a - b);
     let frequency: Frequency;
-    console.log(areEqual(selectedDaysIndices, [0, 1, 2, 3, 4, 5, 6]));
     if (areEqual(selectedDaysIndices, [0, 1, 2, 3, 4, 5, 6])) {
       frequency = { type: "daily" };
     } else {
@@ -34,8 +35,11 @@ const Home = () => {
         day: selectedDaysIndices,
       };
     }
-    createHabitService(habitName, frequency).then((result) => {
-      console.log("Resultado de crear habito: ", result);
+    createHabitService(habitName, frequency).then(() => {
+      setHabitName("");
+      setSelectedDays([]);
+      Alert.alert("Hábito creado correctamente");
+      router.replace("/(app)/home/home");
     });
   };
   return (
