@@ -10,6 +10,7 @@ import {
   TextInput,
   Alert,
 } from "react-native";
+import registerService from "@/app/services/registerService";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 const Register = () => {
@@ -18,36 +19,14 @@ const Register = () => {
   const [name, setName] = useState("");
 
   const handleRegister = () => {
-    const myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append("x-mobile-app", "true");
-
-    const raw = JSON.stringify({
-      name: name,
-      email: email,
-      password: password,
+    const result = registerService(name, email, password);
+    result.then(() => {
+      setEmail("");
+      setPassword("");
+      setName("");
+      Alert.alert("Success", "Registration successful!");
+      router.replace("/(auth)/login");
     });
-
-    const requestOptions = {
-      method: "POST",
-      headers: myHeaders,
-      body: raw,
-      redirect: "follow",
-    };
-
-    console.log("fetch");
-    fetch("http://192.168.18.3:3000/api/users/register", requestOptions)
-      .then((response) => response.json())
-      .then((result) => {
-        setName("");
-        setEmail("");
-        setPassword("");
-        Alert.alert(
-          "Success",
-          "Registro exitoso, inicia sesion " + result.name,
-        );
-        router.navigate("/(auth)/login");
-      });
   };
   return (
     <KeyboardAvoidingView

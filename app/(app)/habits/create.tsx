@@ -3,10 +3,10 @@ import { View, Text, TextInput, TouchableOpacity } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { useState } from "react";
-import createHabitService, {
-  Frequency,
-} from "@/app/services/createHabitService";
-const areEqual = (a: any[], b: any[]) =>
+import createHabitService from "@/app/services/createHabitService";
+import type { Frequency } from "@/app/services/createHabitService";
+
+const areEqual = (a: number[], b: number[]) =>
   a.length === b.length && a.every((val, index) => val === b[index]);
 const dayToIndex: Record<string, number> = {
   Domingo: 0,
@@ -24,7 +24,7 @@ const Home = () => {
     const selectedDaysIndices = selectedDays
       .map((day) => dayToIndex[day])
       .sort((a, b) => a - b);
-    let frequency;
+    let frequency: Frequency;
     console.log(areEqual(selectedDaysIndices, [0, 1, 2, 3, 4, 5, 6]));
     if (areEqual(selectedDaysIndices, [0, 1, 2, 3, 4, 5, 6])) {
       frequency = { type: "daily" };
@@ -34,7 +34,7 @@ const Home = () => {
         day: selectedDaysIndices,
       };
     }
-    createHabitService(habitName, frequency as Frequency).then((result) => {
+    createHabitService(habitName, frequency).then((result) => {
       console.log("Resultado de crear habito: ", result);
     });
   };

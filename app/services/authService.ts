@@ -26,7 +26,8 @@ const authService = async (
     await AsyncStorage.setItem("user", JSON.stringify(user));
     return true;
   } catch (error) {
-    throw error;
+    console.error("Authentication error:", error);
+    throw new Error("Authentication failed. Please try again.");
   }
 };
 

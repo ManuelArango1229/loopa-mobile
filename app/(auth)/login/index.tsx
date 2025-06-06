@@ -19,7 +19,7 @@ const Index = () => {
     console.log(process.env.EXPO_PUBLIC_DEV_BYPASS_AUTH);
     if (process.env.EXPO_PUBLIC_DEV_BYPASS_AUTH === "true") {
       console.log("Bypassing authentication in development mode");
-      router.navigate("/(app)/home/home");
+      router.replace("/(app)/home/home");
       return;
     }
 

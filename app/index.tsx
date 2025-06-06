@@ -7,10 +7,9 @@ import { useRouter } from "expo-router";
 const SplashScreen = () => {
   const router = useRouter();
 
-  const wait = (ms: number) =>
-    new Promise((resolve) => setTimeout(resolve, ms));
-
   useEffect(() => {
+    const wait = (ms: number) =>
+      new Promise((resolve) => setTimeout(resolve, ms));
     const checkToken = async () => {
       await wait(1500);
       const token = SecureStore.getItem("refreshToken");
