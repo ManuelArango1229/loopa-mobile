@@ -1,6 +1,5 @@
-import getAllHabitService from "@/src/services/getAllHabitByDateService";
+import HabitGrid from "@/components/home/habitGrid";
 import { useRouter } from "expo-router";
-import { useEffect } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 
 const Home = () => {
@@ -68,6 +67,7 @@ const Home = () => {
           </Text>
         </TouchableOpacity>
       </View>
+      <HabitGrid />
     </View>
   );
 };
