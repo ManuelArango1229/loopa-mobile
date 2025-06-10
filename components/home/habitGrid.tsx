@@ -1,14 +1,15 @@
 import type React from "react";
-import { View, Text } from "react-native";
+import { View, Text, Pressable } from "react-native";
 const DAYS = ["D", "L", "M", "M", "J", "V", "S"];
 const WEEKS = 5;
+const START_DATE = new Date().getMonth();
 const HabitGrid: React.FC = () => {
   const TOTAL_SQUARES = DAYS.length * WEEKS;
   return (
     <View className="flex-col items-center mt-8">
       <View className="flex-row flex-wrap w-[295] h-64">
         {Array.from({ length: TOTAL_SQUARES }).map((_, index) => (
-          <View
+          <Pressable
             key={`index-${index + 1}`}
             className="w-10 h-10 bg-card rounded-md m-1"
           />
