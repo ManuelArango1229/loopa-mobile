@@ -2,7 +2,7 @@ import HabitGrid from "@/components/home/habitGrid";
 import { useRouter } from "expo-router";
 import { View, Text, TouchableOpacity } from "react-native";
 
-const Home = () => {
+const Overview = () => {
   const router = useRouter();
   const handleNewHabit = () => {
     router.navigate("/(app)/habits/create");
@@ -72,4 +72,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Overview;

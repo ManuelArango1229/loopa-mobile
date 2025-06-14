@@ -15,7 +15,7 @@ const SplashScreen = () => {
       const token = SecureStore.getItem("refreshToken");
 
       if (token) {
-        router.replace("/(app)/home/home");
+        router.replace("/(app)/home/Home");
       } else {
         router.replace("/(auth)/login");
       }
