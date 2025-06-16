@@ -39,7 +39,7 @@ const Home = () => {
       setHabitName("");
       setSelectedDays([]);
       Alert.alert("Hábito creado correctamente");
-      router.replace("/(app)/home/home");
+      router.replace("/(app)/home/Home");
     });
   };
   return (
