@@ -8,7 +8,6 @@ const SplashScreen = () => {
   const router = useRouter();
 
   useEffect(() => {
-    SecureStore.deleteItemAsync("refreshToken");
     const wait = (ms: number) =>
       new Promise((resolve) => setTimeout(resolve, ms));
     const checkToken = async () => {

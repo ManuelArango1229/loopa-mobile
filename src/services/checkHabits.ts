@@ -1,11 +1,11 @@
 import * as SecureStore from "expo-secure-store";
 
-const createHabitService = async (
+const checkHabitService = async (
   habitId: string,
   date: Date,
 ): Promise<boolean> => {
   const response = await fetch(
-    `${process.env.EXPO_PUBLIC_DEV_SERVER_SOCKET}api/habits/check`,
+    `${process.env.EXPO_PUBLIC_DEV_SERVER_SOCKET}/api/habits/check`,
     {
       method: "POST",
       headers: {
@@ -18,7 +18,7 @@ const createHabitService = async (
       }),
     },
   );
-
+  console.log(response);
   return response.ok;
 };
-export default createHabitService;
+export default checkHabitService;
